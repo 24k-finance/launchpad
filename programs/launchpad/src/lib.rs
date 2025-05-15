@@ -8,7 +8,7 @@ pub mod events;
 pub mod instructions;
 pub mod state;
 
-declare_id!("CqcCvZmiLwhgKJvhVzttVct2aHRW4n1dJFNiSpoJQHuq");
+declare_id!("twzXVjyX5rLv2aFAGw8tBTtvps4cvYaC9UFn95MHEJZ");
 
 #[program]
 pub mod launchpad {
@@ -16,34 +16,34 @@ pub mod launchpad {
 
     // Pool instructions
 
-    pub fn stake(
-        ctx: Context<Stake>, params: StakeParams
-    ) -> Result<()> {
+    pub fn stake(ctx: Context<Stake>, params: StakeParams) -> Result<()> {
         instructions::handler_stake(ctx, &params)
     }
 
-    pub fn release(
-        ctx: Context<Release>
-    ) -> Result<()> {
+    pub fn release(ctx: Context<Release>) -> Result<()> {
         instructions::handler_release(ctx)
     }
 
     // Manager instructions
-    pub fn apply_mine(
-        ctx: Context<ApplyMine>, params: ApplyMineParams
-    ) -> Result<()> {
+    pub fn apply_mine(ctx: Context<ApplyMine>, params: ApplyMineParams) -> Result<()> {
         instructions::handler_apply(ctx, &params)
     }
 
-    pub fn approve_mine(
-        ctx: Context<ApproveMine>, mine_code: String
-    ) -> Result<()> {
+    pub fn approve_mine(ctx: Context<ApproveMine>, mine_code: String) -> Result<()> {
         instructions::handler_approve(ctx, mine_code)
     }
 
     pub fn sign_mine(
-        ctx: Context<SignMine>, mine_code: String
+        ctx: Context<SignMine>,
+        mine_code: String,
+        bump_launch_pool: u8,
     ) -> Result<()> {
-        instructions::handler_sign(ctx, mine_code)
+        instructions::handler_sign(ctx, mine_code, bump_launch_pool)
     }
+    // pub fn sign_mine(
+    //     ctx: Context<SignMine>,
+    //     mine_code: String,
+    // ) -> Result<()> {
+    //     instructions::handler_sign(ctx, mine_code)
+    // }
 }

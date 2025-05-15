@@ -8,11 +8,23 @@ pub enum ErrorCode {
     #[msg("Start time must be in the future")]
     StartTimeInPast,
 
+    #[msg("End time must be in the future")]
+    InvalidVaultAuthority,
+
+    #[msg("Invalid vault authority")]
+    InvalidVaultMint,
+
     #[msg("End time must be after start time")]
     InvalidTimeRange,
 
     #[msg("Frozen period must be 1-36 months")]
     InvalidFrozenPeriod,
+
+    #[msg("Unauthorized")]
+    ApplicationAlreadySigned,
+
+    #[msg("ApplicationNotApproved Unauthorized")]
+    ApplicationNotApproved,
 
     // Financial limits
     #[msg("Invalid rate (0-10000 allowed)")]
